@@ -19,23 +19,32 @@ module Editor
       end
 
       def flood_fill(x, y)
-        return if visited?(x, y)
-        return unless image.get(x, y) == current_color
+        stack = []
+        stack.push(x: x, y: y)
 
-        image.set(x, y, color_to_set)
+        until stack.empty?
+          current = stack.pop
+          x = current.fetch(:x)
+          y = current.fetch(:y)
 
-        left  = x - 1
-        right = x + 1
-        up    = y - 1
-        down  = y + 1
+          next if out_of_bounds?(x, y)
+          next if visited?(x, y)
+          next if different_color?(x, y)
 
-        flood_fill(left, y) if left >= 1
-        flood_fill(right, y) if right <= image.width
-        flood_fill(x, up) if up >= 1 if up >= 1
-        flood_fill(x, down) if down <= image.height
+          image.set(x, y, color_to_set)
+
+          stack.push(x: x - 1, y: y)
+          stack.push(x: x + 1, y: y)
+          stack.push(x: x, y: y - 1)
+          stack.push(x: x, y: y + 1)
+        end
       end
 
       private
+
+      def out_of_bounds?(x, y)
+        x < 1 || y < 1 || x > image.width || y > image.height
+      end
 
       def visited?(x, y)
         @visited ||= {}
@@ -46,6 +55,10 @@ module Editor
           @visited[[x, y]] = true
           false
         end
+      end
+
+      def different_color?(x, y)
+        image.get(x, y) != current_color
       end
 
       attr_accessor :image, :current_color, :color_to_set
