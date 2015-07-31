@@ -1,2 +1,1 @@
-module Editor
-end
+require "editor/base"
