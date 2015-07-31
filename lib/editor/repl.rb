@@ -6,7 +6,11 @@ module Editor
       loop do
         print "> "
         line = gets
-        image = Command.execute(line, image, STDOUT)
+        begin
+          image = Command.execute(line, image, STDOUT)
+        rescue => e
+          puts "error: #{e.message}"
+        end
       end
     end
   end

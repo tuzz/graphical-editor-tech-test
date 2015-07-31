@@ -44,4 +44,9 @@ JJJJJ
     actual = `echo '#{input}' | ./bin/editor`
     expect(actual).to include(expected)
   end
+
+  it "traps errors and presents the message nicely" do
+    actual = `echo 'FOO\nX\n' | ./bin/editor`
+    expect(actual).to include('error: key not found: "FOO"')
+  end
 end
