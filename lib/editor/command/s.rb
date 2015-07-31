@@ -1,7 +1,7 @@
 module Editor
   module Command
     module S
-      def self.execute(io:, image:)
+      def self.execute(image:, io:)
         1.upto(image.height) do |y|
           1.upto(image.width) do |x|
             color = image.get(x, y)
@@ -10,6 +10,7 @@ module Editor
 
           io.write("\n")
         end
+        image
       end
     end
   end

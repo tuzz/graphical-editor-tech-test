@@ -1,7 +1,10 @@
 module Editor
   module Command
     class F
-      def self.execute(x:, y:, c:, image:)
+      def self.execute(x:, y:, c:, image:, io:)
+        x = Integer(x)
+        y = Integer(y)
+
         current_color = image.get(x, y)
         color_to_set = c
 

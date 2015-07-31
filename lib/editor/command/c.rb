@@ -1,7 +1,7 @@
 module Editor
   module Command
     module C
-      def self.execute(image:)
+      def self.execute(image:, io:)
         Image.new(width: image.width, height: image.height)
       end
     end
