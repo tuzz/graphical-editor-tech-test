@@ -43,4 +43,9 @@ RSpec.describe Editor::Command do
     expect(described_class::X).to receive(:execute).with(image: image, output: output)
     described_class.execute("X", image, output)
   end
+
+  it "strips leading and trailing whitespace" do
+    expect(described_class::I).to receive(:execute).with(m: "1", n: "2", image: image, output: output)
+    described_class.execute("  I   1   2  ", image, output)
+  end
 end

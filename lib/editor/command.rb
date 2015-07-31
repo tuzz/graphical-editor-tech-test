@@ -2,7 +2,7 @@ module Editor
   module Command
     class << self
       def execute(line, image, output)
-        command, *args = line.split
+        command, *args = line.strip.split
         mapping = command_map.fetch(command)
 
         params = Hash[mapping.args.zip(args)]
