@@ -6,7 +6,7 @@ RSpec.describe Editor::Command::S do
     io = StringIO.new
 
     image = subject.execute(image: image, io: io)
-    expect(io.string).to eq("O\nO\n")
+    expect(io.string).to eq("\n=>\nO\nO\n\n")
   end
 end
 
