@@ -1,4 +1,5 @@
 require "editor"
+require "stringio"
 require "rspec"
 
 RSpec.configure do |config|
