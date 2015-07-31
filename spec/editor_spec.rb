@@ -10,11 +10,6 @@ X
     INPUT
 
     expected = <<-OUTPUT
-> I 5 6
-> L 2 3 A
-> S
-
-=>
 OOOOO
 OOOOO
 OAOOO
@@ -24,11 +19,12 @@ OOOOO
     OUTPUT
 
     actual = `echo '#{input}' | ./bin/editor`
-    expect(actual).to eq(expected)
+    expect(actual).to include(expected)
   end
 
   it "produces the correct output for the second example in the readme" do
     input = <<-INPUT
+I 5 6
 F 3 3 J
 V 2 3 4 W
 H 3 4 2 Z
@@ -37,12 +33,6 @@ X
     INPUT
 
     expected = <<-OUTPUT
-> F 3 3 J
-> V 2 3 4 W
-> H 3 4 2 Z
-> S
-
-=>
 JJJJJ
 JJZZJ
 JWJJJ
@@ -52,6 +42,6 @@ JJJJJ
     OUTPUT
 
     actual = `echo '#{input}' | ./bin/editor`
-    expect(actual).to eq(expected)
+    expect(actual).to include(expected)
   end
 end

@@ -1,4 +1,4 @@
-require "editor/base"
+require "editor/repl"
 require "editor/image"
 require "editor/command"
 require "editor/command/i"
