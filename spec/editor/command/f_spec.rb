@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe Editor::Command::F do
   it "flood-fills the region starting at the given pixel" do
     image = Editor::Image.new(width: 7, height: 5)
-    io = StringIO.new
+    output = StringIO.new
 
     image.set(4, 1, "X")
     image.set(4, 2, "X")
@@ -11,7 +11,7 @@ RSpec.describe Editor::Command::F do
     image.set(4, 4, "X")
     image.set(4, 5, "X")
 
-    image = described_class.execute(x: "2", y: "3", c: "A", image: image, io: io)
+    image = described_class.execute(x: "2", y: "3", c: "A", image: image, output: output)
 
     expect(image.get(1, 1)).to eq("A")
     expect(image.get(1, 5)).to eq("A")

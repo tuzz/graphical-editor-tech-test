@@ -1,7 +1,7 @@
 module Editor
   module Command
     class F
-      def self.execute(x:, y:, c:, image:, io:)
+      def self.execute(x:, y:, c:, image:, output:)
         x = Integer(x)
         y = Integer(y)
 

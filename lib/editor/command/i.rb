@@ -1,7 +1,7 @@
 module Editor
   module Command
     module I
-      def self.execute(m:, n:, image:, io:)
+      def self.execute(m:, n:, image:, output:)
         m = Integer(m)
         n = Integer(n)
 

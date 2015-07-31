@@ -1,7 +1,7 @@
 module Editor
   module Command
     module H
-      def self.execute(x1:, x2:, y:, c:, image:, io:)
+      def self.execute(x1:, x2:, y:, c:, image:, output:)
         x1 = Integer(x1)
         x2 = Integer(x2)
         y = Integer(y)

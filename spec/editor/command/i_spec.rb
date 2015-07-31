@@ -3,9 +3,9 @@ require "spec_helper"
 RSpec.describe Editor::Command::I do
   it "creates a new M x N image with all pixels colored white" do
     image = Editor::Image.new(width: 1, height: 2)
-    io = StringIO.new
+    output = StringIO.new
 
-    image = subject.execute(m: "1", n: "2", image: image, io: io)
+    image = subject.execute(m: "1", n: "2", image: image, output: output)
 
     expect(image.width).to eq(1)
     expect(image.height).to eq(2)

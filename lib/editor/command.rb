@@ -1,12 +1,12 @@
 module Editor
   module Command
     class << self
-      def execute(line, image, io)
+      def execute(line, image, output)
         command, *args = line.split
         mapping = command_map.fetch(command)
 
         params = Hash[mapping.args.zip(args)]
-        params.merge!(image: image, io: io)
+        params.merge!(image: image, output: output)
 
         mapping.command.execute(params)
       end

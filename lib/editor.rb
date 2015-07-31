@@ -1,3 +1,5 @@
+require "stringio"
+
 require "editor/repl"
 require "editor/image"
 require "editor/command"
