@@ -45,8 +45,15 @@ JJJJJ
     expect(actual).to include(expected)
   end
 
-  it "traps errors and presents the message nicely" do
-    actual = `echo 'FOO\nX\n' | ./bin/editor`
-    expect(actual).to include('error: key not found: "FOO"')
+  describe "error handling" do
+    it "traps errors and presents the message nicely" do
+      actual = `echo 'FOO\nX\n' | ./bin/editor`
+      expect(actual).to include('error: key not found: "FOO"')
+    end
+
+    it "does not throw an error for empty lines" do
+      actual = `echo '\n\nX\n' | ./bin/editor`
+      expect(actual).to_not include("error")
+    end
   end
 end
