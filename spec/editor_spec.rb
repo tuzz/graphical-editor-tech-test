@@ -52,7 +52,7 @@ JJJJJ
     end
 
     it "does not throw an error for empty lines" do
-      actual = `echo '\n\nX\n' | ./bin/editor`
+      actual = `echo 'I 1 1\n\nC\nX\n' | ./bin/editor`
       expect(actual).to_not include("error")
     end
   end

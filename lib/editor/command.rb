@@ -3,7 +3,7 @@ module Editor
     class << self
       def execute(line, image, output)
         line.strip!
-        return if line.empty?
+        return image if line.empty?
 
         command, *args = line.split
         mapping = command_map.fetch(command)
